@@ -117,7 +117,7 @@ Future<Map<String, dynamic>> fetchWeather(String city) async {
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    "$currentTemp K",
+                                    "${currentTemp-273}°C",
                                     style: TextStyle(
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold,
@@ -196,10 +196,11 @@ Future<Map<String, dynamic>> fetchWeather(String city) async {
                         itemBuilder: (context, index) {
                           final timeObject = DateTime.parse(data["list"][index+1]["dt_txt"]);
                           final time = DateFormat.j().format(timeObject);
+                          String temperatureInDegreeCelcius = "${(data["list"][index+1]["main"]["temo"])-273}°C";
                           return HourlyForecastItem(
                             time: time.toString(),
                             icon: (data["list"][index+1]["weather"][0]["main"] == "Clouds" || data["list"][index+1]["weather"][0]["main"] == "Rain") ? Icons.cloud:Icons.sunny,
-                            temperature: data["list"][index+1]["main"]["temp"].toString(),
+                            temperature: temperatureInDegreeCelcius,
                           );
                         }
                       ),
