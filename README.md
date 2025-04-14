@@ -31,3 +31,7 @@ Ensure you have the following installed:
    
 ## Contribution
 Contributions are welcome! Please open an issue or submit a pull request.
+
+## Screenshots
+
+![App Screenshot](assets/screenshots/weather-app-demo1.jpg)
