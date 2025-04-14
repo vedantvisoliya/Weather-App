@@ -196,11 +196,11 @@ Future<Map<String, dynamic>> fetchWeather(String city) async {
                         itemBuilder: (context, index) {
                           final timeObject = DateTime.parse(data["list"][index+1]["dt_txt"]);
                           final time = DateFormat.j().format(timeObject);
-                          String temperatureInDegreeCelcius = "${(data["list"][index+1]["main"]["temo"])-273}°C";
+                          double temperatureInDegreeCelcius = (data["list"][index+1]["main"]["temp"])-273;
                           return HourlyForecastItem(
                             time: time.toString(),
                             icon: (data["list"][index+1]["weather"][0]["main"] == "Clouds" || data["list"][index+1]["weather"][0]["main"] == "Rain") ? Icons.cloud:Icons.sunny,
-                            temperature: temperatureInDegreeCelcius,
+                            temperature: "${temperatureInDegreeCelcius.toStringAsFixed(2)}°C",
                           );
                         }
                       ),
